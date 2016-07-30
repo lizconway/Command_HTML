@@ -101,7 +101,7 @@
 			$.ajax({
 			
 				type:"GET",
-				url: "http://localhost/ServerSide/Assessment/WebService/index.php/CommandCtrl/getCommandments/",
+				url: "http://localhost/ServerSide/Assessment/WebService/index.php/commandments/",
 				dataType: "json",
 				success: createList,
 	            error: function(xhr, status, error) {
@@ -128,7 +128,7 @@
 			$.ajax({
 			
 				type:"GET",
-				url: "http://localhost/ServerSide/Assessment/WebService/index.php/CommandCtrl/getTranslations/",
+				url: "http://localhost/ServerSide/Assessment/WebService/index.php/translations/",
 				dataType: "json",
 				success: buildTxtTable,
 	            error: function(xhr, status, error) {
