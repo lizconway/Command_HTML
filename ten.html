@@ -101,7 +101,7 @@
 			$.ajax({
 			
 				type:"GET",
-				url: "http://localhost/ServerSide/Assessment/WebService/index.php/commandments/",
+				url: "http://localhost/ServerSide/Assessment/WebService/commandments/",
 				dataType: "json",
 				success: createList,
 	            error: function(xhr, status, error) {
@@ -128,17 +128,18 @@
 			$.ajax({
 			
 				type:"GET",
-				url: "http://localhost/ServerSide/Assessment/WebService/index.php/translations/",
+				url: "http://localhost/ServerSide/Assessment/WebService/translations/",
 				dataType: "json",
 				success: buildTxtTable,
 	            error: function(xhr, status, error) {
-	            		// This callback function will trigger on unsuccessful action                
-	            	  	var err = eval("(" + xhr.responseText + ")");
+	            		// This callback function will trigger on unsuccessful action
+	            		console.log("In error function for Translations");
+	            		console.log(xhr.responseText);
+	            	  	/* var err = eval("(" + xhr.responseText + ")");
 	            	  	console.log("ERROR :  " + err.Message);
 	            	
-	            		console.log("ERROR : error :: " + error);
+	            		console.log("ERROR : error :: " + error); */
 	            	}
-				
 			});
 			
 			console.log("Ready!");
@@ -150,7 +151,7 @@
 		/* this function is the callback function specified in the ajax 'success' event
 		*/
 		function createList(data) {
-	
+	console.log("Successfully retrieved Commandments");
 			/*
 			 *	Loop through each commandment in the JSON input data
 			 *	For each commandment :
@@ -187,7 +188,7 @@
 				 $("#myList").toggleClass("hideMe");
 				$("#myList").listview('refresh');
 				$.mobile.loading("hide");
-			 }, 500);
+			 }, 1000);
 		}
 		
 		/** Parsing JSON data
@@ -216,7 +217,7 @@
 			setTimeout(function() {
 					 $("[data-role='panel']:not(.intro)").append(table);
 					 //$(".ui-icon-grid").toggleClass("hideMe");
-				}, 250
+				}, 500
 			);
 		}
 		
