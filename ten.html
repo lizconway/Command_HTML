@@ -26,7 +26,7 @@
 			<div data-role="panel" class="intro" id="instructions" data-position="left" data-display="push" data-theme="a">
 				<h3>Instructions</h3>
 				<ul>
-					<li>Click in the input box (Filter items...) and enter any filter criteria to reduce the list.</li>
+					<li>Click in the input box (Type here to filter items) and enter any filter criteria to reduce the list.</li>
 					<li>Click on the chosen commandment you wish to view</li>
 					<li><p>
 							 	When viewing the commandment detail there is a small icon in the
@@ -187,7 +187,7 @@
 				 $("#myList").toggleClass("hideMe");
 				$("#myList").listview('refresh');
 				$.mobile.loading("hide");
-			 }, 8500);
+			 }, 500);
 		}
 		
 		/** Parsing JSON data
@@ -195,6 +195,13 @@
 		/* this function is the callback function specified in the ajax 'success' event
 		*/
 		function buildTxtTable(data) {
+			console.log("Successfully imported Translation data");
+				for(var text in data.textSpeak) {
+					var txt = data.textSpeak[text].txt;
+					var english = data.textSpeak[text].english;
+
+					console.log(txt + " :  " + english);
+				}
 			var table = buildTxtSpkTransl8n(data);
 			//alert("Translation table built");
 			
@@ -206,11 +213,11 @@
 			 /**
 			  * Wrap in a setTimeout to try and delay before appending the table
 			  */
-			//setTimeout(function() {
-				 $("[data-role='panel']:not(.intro)").append(table);
-				 //$(".ui-icon-grid").toggleClass("hideMe");
-			//}, 10000
-				//	);
+			setTimeout(function() {
+					 $("[data-role='panel']:not(.intro)").append(table);
+					 //$(".ui-icon-grid").toggleClass("hideMe");
+				}, 250
+			);
 		}
 		
 		function buildPage(number, title, desc, image) {
